@@ -1,8 +1,12 @@
+# Made by Jfetto 
+# Roll
+
+
 import random 
 import time
 import os
 
-# Function for time conversion and printing out proper grammer
+# Function for time conversion and printing out proper grammer probably a little excessive but its a fun function
 def all_time(time_value):
     time = int(time_value)
     seconds = time
@@ -44,6 +48,7 @@ iterations = 0
 match = 0
 tmatch = 0
 start = time.time()
+# Things for f(strings)
 status = " Still Trying....."
 if_found = "Matches Found"
 
@@ -54,21 +59,22 @@ while tmatch < max(stack1):
     random.shuffle(stack1)
     random.shuffle(stack2)
 
+    # Main while loop
     for (zip1,zip2) in zip(stack1,stack2) :
         if zip1 == zip2 :
             match += 1
             print(f"Current Status : {status} | Iterations = {iterations} | {tmatch} Matches Found " , end="\r")  
         elif zip1 != zip2:
             continue
-
+    # clears out the match variable and gives it to tmatch
     if match > tmatch : 
         tmatch = match
         match = 0
-    
+    # changes status in the f string not really needed anymore but i like it 
     if tmatch == max(stack1):
-        status = "Completed"
+        status = "!-Completed-!"
         #time.sleep(2)
-        os.system("clear")
+        os.system("clear") # will only work on linux
         print (f"<(0_0<) <(0_0)> (>0_0)> ")
         print(f"{status} | Iterations = {iterations} | {tmatch}  Matches Found" , end="\r")  
    
@@ -76,8 +82,10 @@ end = time.time() - start   # end of the timer used to call into the function
 
 
 # Final print statments 
-print()
+
+# stopping the clock for the function 
 all_time(end)
+print()
 print("Final position for list one: ",stack1)
 print("Final Position for list two: ", stack2)
 
