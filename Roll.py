@@ -1,6 +1,6 @@
 import random 
 import time
-
+import os
 
 # Function for time conversion and printing out proper grammer
 def all_time(time_value):
@@ -28,12 +28,12 @@ def all_time(time_value):
     elif seconds > 1 :
         print(seconds, "Seconds ")
     if seconds < 1 : 
-        print(round(time_value, 3))    
+        print(round(time_value, 3),"Seconds")    
     
 
-# Initializing the range variables    
-stack1 = [*range(1,6)]
-stack2 = [*range(1,6)]
+# Initializing the range variables  n-1  
+stack1 = [*range(1,10)]
+stack2 = [*range(1,10)]
 
 # shuffling the variables before the while loop starts
 random.shuffle(stack1)
@@ -45,6 +45,7 @@ match = 0
 tmatch = 0
 start = time.time()
 status = " Still Trying....."
+if_found = "Matches Found"
 
 # Main while loop to iterate through the zipped lists 
 while tmatch < max(stack1):
@@ -56,16 +57,20 @@ while tmatch < max(stack1):
     for (zip1,zip2) in zip(stack1,stack2) :
         if zip1 == zip2 :
             match += 1
+            print(f"Current Status : {status} | Iterations = {iterations} | {tmatch} Matches Found " , end="\r")  
         elif zip1 != zip2:
             continue
 
     if match > tmatch : 
         tmatch = match
         match = 0
+    
     if tmatch == max(stack1):
         status = "Completed"
-    
-    print(f"Current Status : {status} | Iterations = {iterations} | {tmatch}  Max matches found" , end="\r")  
+        #time.sleep(2)
+        os.system("clear")
+        print (f"<(0_0<) <(0_0)> (>0_0)> ")
+        print(f"{status} | Iterations = {iterations} | {tmatch}  Matches Found" , end="\r")  
    
 end = time.time() - start   # end of the timer used to call into the function    
 
